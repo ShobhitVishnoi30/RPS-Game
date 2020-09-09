@@ -12,8 +12,7 @@ contract MarketPlace{
     NFT public called_address;
     
     address public owner_address;
-    
-    
+   
     uint256[] tokenid_added;
     
     uint256 public available_token_count;
@@ -31,10 +30,12 @@ contract MarketPlace{
       _;
    }
     
+
     constructor() public{
            owner_address=msg.sender;
        }
     
+
     function setAddress(address _address) public onlyOwner{              //set NFT token contract address
         called_address = NFT(_address);
     }
@@ -59,9 +60,9 @@ contract MarketPlace{
         available_token_count++;
         
     }     
-         
-         
-         
+       
+
+       
     function showAvailableToken() public view returns(uint256[] memory available){
           uint256[] memory available_token_for_sell = new uint[](available_token_count);
           uint j;
@@ -74,7 +75,8 @@ contract MarketPlace{
         return available_token_for_sell;
       
     }
-    
+
+ 
     function buy(uint256 _tokenId) public payable{                                
         address owner;
         owner=called_address.ownerOf(_tokenId);  
